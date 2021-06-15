@@ -16,6 +16,7 @@ data:
         static_configs:
         - targets: ['<KUBERNETES_IP>:9100', '<KUBERNETES_IP>:9100']
 
+#first Job
       - job_name: 'kubernetes-apiservers'
 
         kubernetes_sd_configs:
@@ -30,7 +31,8 @@ data:
         - source_labels: [__meta_kubernetes_namespace, __meta_kubernetes_service_name, __meta_kubernetes_endpoint_port_name]
           action: keep
           regex: default;kubernetes;https
-
+          
+#Second Job
       - job_name: 'kubernetes-nodes'
 
         scheme: https
